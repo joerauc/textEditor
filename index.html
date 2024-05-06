@@ -85,7 +85,8 @@
             </button>
 
             <!-- Headers -->
-            <select id="formatBlock" class="adv-option-button">
+            <select id="formatBlock" onchange="changeHeader()">
+                <option value="" disabled style="display:none;">H_</option>
                 <option value="H1">H1</option>
                 <option value="H2">H2</option>
                 <option value="H3">H3</option>
@@ -95,8 +96,26 @@
             </select>
 
             <!-- Font -->
-            <select id="fontName" class="adv-option-button"></select>
-            <select id="fontSize" class="adv-option-button"></select>
+            <select id="fontName" onchange="changeFontName()">
+                <option value="" disabled style="display:none;">font name</option>
+                <option value="Arial" selected>Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Cursive">Cursive</option>
+            </select>
+            <select id="fontSize" onchange="changeFontSize()">
+                <option value="" disabled style="display:none;">size</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
 
             <!-- Color -->
             <div class="input-wrapper">
@@ -109,7 +128,7 @@
             </div>
         </div>
         <div id="text-input" contenteditable="true">
-
+            <!-- <span class="editable-text"></span> -->
         </div>
     </div>
     <!-- Script -->
@@ -118,14 +137,20 @@
 
 </html>
 
-<!-- Resume YT video @ __ https://www.youtube.com/watch?v=la-0HOaNL10 -->
 <!-- 
     Things not working:
-    - Default text is Times New Roman but it says "Arial" when the page is opened
-    - Bullet points don't scale with font size
-    - Headers don't seem to all make a difference
-    - Linking doesn't work (Commenting section out because it breaks other things)
-    - Font color doesn't work                                                           FIXED
-    - Hightlight color doesn't work                                                     FIXED
-    - Buttons that stay highlighted only respond to clicks, not the text they're highlighting
+    - (FIXED)   Default text is Times New Roman but it says "Arial" when the page is opened       
+    - (SKIPPED) Bullet points don't scale with font size
+      - Taking too many hours to fix. Have learned that in order to change bullet size separate from font size
+        (so that it looks larger) I can make a separate element within each list item. Set list item size to 
+        desired bullet point size and inner item font size to desired text size.
+    - (FIXED)   Highlighting text to change font size/type does nothing if dropdown value isn't changed           
+      -  i.e. I'm using font size 5 and want to go back and change something to also be font size 5. It won't
+         change until I change the font size to some other number, then back to 5 (event listener: change)
+      - Maybe try event listener "mouseup" and activeElement
+    - (FIXED)   Headers don't seem to all make a difference
+      - Essentially same problem as above
+    - (FIXED)   Linking doesn't work
+    - ()    Highlight color doesn't work in a bulleted list                                                
+    - ()    Buttons that stay highlighted only respond to clicks, not the text they're highlighting
  -->
